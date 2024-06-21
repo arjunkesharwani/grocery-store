@@ -1,7 +1,6 @@
 import { connectToDatabase } from "./src/config/database";
 import * as readline from "readline";
 import { setupDatabase } from "./src/models";
-import CartService from "./src/services/cart.service";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -18,6 +17,7 @@ function question(prompt: string): Promise<string> {
 
 async function main() {
   await connectToDatabase();
+  await setupDatabase();
 
   const input = await question(
     "Please enter all the items purchased separated by a comma: "
